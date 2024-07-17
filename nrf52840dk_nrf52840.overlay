@@ -1,0 +1,35 @@
+// &i2c0 {
+//   status="okay";
+// };
+
+
+&i2c0 {
+  status ="okay";
+clock-frequency = <I2C_BITRATE_STANDARD>;
+  sps30@69 {
+  status = "okay";
+  compatible = "sensirion,sps30";
+  reg = <0x69>;
+  model = "sps30";
+};
+
+};
+
+&uart0 {
+status = "okay";
+hw-flow-control;
+};
+
+&uart1 {
+  status = "okay";
+};  
+
+&pinctrl {
+  i2c0_default: i2c0_default {
+  group1 {
+    psels = <NRF_PSEL(TWIM_SDA, 0, 27)>,
+      <NRF_PSEL(TWIM_SCL, 0, 26)>;
+          bias-pull-up;
+  };
+};
+};
